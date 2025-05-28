@@ -1,4 +1,6 @@
+import sqlite3
 from database import initialize_database
+from repository import write_teams
 from mlb_api import get_mlb_teams
 
 def main():
@@ -11,13 +13,12 @@ def start_interface():
     try:
         continue_program = True
         while(continue_program):
-            command = input("(UT) Update teams, (T) List teams,  (X) Exit: ")
+            command = input("(UT) Update teams,  (X) Exit: ")
 
             if(command.lower() == 'ut'):
                 teams = get_mlb_teams()
-                
+                write_teams(teams)
                 if teams:
-                    print(teams)
                     print("Teams fetched successfully.")
                 else:
                     print("No teams found or an error occurred.")
