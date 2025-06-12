@@ -1,13 +1,13 @@
 import requests
 
-
-# Get MLB teams return json data from the MLB Stats API
 def get_mlb_teams():
     """Fetch MLB teams from the MLB Stats API."""
     return api_call("https://statsapi.mlb.com/api/v1/teams?sportId=1")
 
+def get_standings():
+    """Fetch MLB standings from the MLB Stats API."""
+    return api_call("https://statsapi.mlb.com/api/v1/standings?leagueId=104&season=2025&standingsTypes=regularSeason&date=2025-05-26")
 
-# Make an API call, return json data
 def api_call(endpoint):
     """Make an API call to fetch MLB teams and print their names."""
     url = endpoint
